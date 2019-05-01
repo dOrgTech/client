@@ -10,6 +10,7 @@ import { getWeb3Options, isAddress } from './utils'
 export interface IReputationState {
   address: Address
   totalSupply: number
+  reputationHolders: Address[]
 }
 
 export class Reputation implements IStateful<IReputationState> {
@@ -22,7 +23,8 @@ export class Reputation implements IStateful<IReputationState> {
       reputationContract (id: "${this.address.toLowerCase()}") {
         id,
         address,
-        totalSupply
+        totalSupply,
+        reputationHolders
       }
     }`
     const itemMap = (item: any): IReputationState => {
@@ -31,7 +33,8 @@ export class Reputation implements IStateful<IReputationState> {
       }
       return {
         address: item.address,
-        totalSupply: item.totalSupply
+        totalSupply: item.totalSupply,
+        reputationHolders: item.reputationHolders
       }
     }
     return this.context._getObservableObject(query, itemMap) as Observable<IReputationState>

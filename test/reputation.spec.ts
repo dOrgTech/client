@@ -31,7 +31,7 @@ describe('Reputation', () => {
     const reputation = new Reputation(address, arc)
     expect(reputation).toBeInstanceOf(Reputation)
     const state = await reputation.state().pipe(first()).toPromise()
-    expect(Object.keys(state)).toEqual(['address', 'totalSupply'])
+    expect(Object.keys(state)).toEqual(['address', 'totalSupply', 'reputationHolders'])
     const expected = {
        address: address.toLowerCase()
     }
@@ -56,14 +56,18 @@ describe('Reputation', () => {
   it('mint() works', async () => {
     const reputation = new Reputation(addresses.organs.DemoReputation, arc)
     const reputationBefore = new BN(await reputation.contract().methods.balanceOf(accounts[3].address).call())
-    await reputation.mint(accounts[3].address, toWei(1)).send()
-    await reputation.mint(accounts[3].address, new BN('1')).send()
-    await reputation.mint(accounts[3].address, new BN('1e18')).send()
-    await reputation.mint(accounts[3].address, new BN('3000e18')).send()
+    const reputationHolder = accounts[3].address;
+    await reputation.mint(reputationHolder, toWei(1)).send()
+    await reputation.mint(reputationHolder, new BN('1')).send()
+    await reputation.mint(reputationHolder, new BN('1e18')).send()
+    await reputation.mint(reputationHolder, new BN('3000e18')).send()
 
     const reputationAfter = new BN(await reputation.contract().methods.balanceOf(accounts[3].address).call())
     const difference = reputationAfter.sub(reputationBefore)
     expect(difference.toString()).toEqual('1000000000003003837')
+
+    const state = await reputation.state().pipe(first()).toPromise()
+    expect(state.reputationHolders).toBe([reputationHolder])
   })
 
   it('mint() throws a meaningful error if the sender is not the contract owner', async () => {

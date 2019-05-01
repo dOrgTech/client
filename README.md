@@ -28,11 +28,6 @@ docker-compose up graph-node
 
 This command will build and start a graph instance, ganache, IPFS and postgresql.
 
-Before being able to use these services, you need to deploy the DAOStack contracts and configure the graph node to listen to changes:
-```sh
-npm run setup-env
-```
-
 To run the tests, run:
 ```sh
 npm run test
