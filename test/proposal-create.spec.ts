@@ -7,7 +7,6 @@ import {
   fromWei,
   getTestAddresses,
   getTestDAO,
-  getTestScheme,
   newArc,
   toWei,
   waitUntilTrue,
@@ -37,8 +36,7 @@ describe('Create a ContributionReward proposal', () => {
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
       nativeTokenReward: toWei('1'),
-      reputationReward: toWei('10'),
-      plugin: getTestScheme("ContributionReward")
+      reputationReward: toWei('10')
     }
 
     const proposal = await createCRProposal(arc, options)
@@ -89,7 +87,6 @@ describe('Create a ContributionReward proposal', () => {
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
       nativeTokenReward: toWei('1'),
-      plugin: getTestScheme("ContributionReward"),
       title: 'A modest proposal',
       url: 'http://swift.org/modest'
     }
@@ -132,7 +129,6 @@ describe('Create a ContributionReward proposal', () => {
       ethReward: toWei('300'),
       externalTokenAddress: undefined,
       nativeTokenReward: toWei('1'),
-      plugin: getTestScheme("ContributionReward"),
       title: 'A modest proposal',
       url: 'http://swift.org/modest'
     }

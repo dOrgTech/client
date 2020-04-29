@@ -38,7 +38,6 @@ describe('Proposal', () => {
       descriptionHash: '',
       parametersHash: '0x0000000000000000000000000000000000000000000000000000000000001234',
       permissions: '0x0000001f',
-      plugin: getTestScheme("SchemeRegistrar"),
       schemeToRegister,
       proposalType: "SchemeRegistrarAdd"
     }
@@ -104,7 +103,6 @@ describe('Proposal', () => {
       descriptionHash: '',
       parametersHash: '0x0000000000000000000000000000000000000000000000000000000000001234',
       permissions: '0x0000001f',
-      plugin: getTestScheme("SchemeRegistrar"),
       schemeToRegister: schemeToRegister.toLowerCase(),
       proposalType: "SchemeRegistrarEdit"
     }
@@ -138,7 +136,6 @@ describe('Proposal', () => {
 
     const removeProposalOptions: IProposalCreateOptionsSR = {
       dao: dao.id,
-      plugin: getTestScheme("SchemeRegistrar"),
       schemeToRegister,
       proposalType: "SchemeRegistrarRemove"
     }

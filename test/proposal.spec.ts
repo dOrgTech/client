@@ -18,7 +18,6 @@ import BN from 'bn.js'
 import { createAProposal,
   fromWei,
   getTestAddresses,
-  getTestScheme,
   ITestAddresses,
   newArc,
   toWei,
@@ -170,8 +169,7 @@ describe('Proposal', () => {
       nativeTokenReward: toWei('1'),
       periodLength: 0,
       periods: 1,
-      reputationReward: toWei('10'),
-      plugin: getTestScheme("ContributionReward")
+      reputationReward: toWei('10')
     }
 
     const proposal = await createCRProposal(arc, options)

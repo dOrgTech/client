@@ -2,7 +2,7 @@ import { first } from 'rxjs/operators'
 import { Arc } from '../src/arc'
 import { DAO } from '../src/dao'
 import {  Reward, IRewardState } from '../src/reward'
-import { getTestDAO, newArc, toWei, createCRProposal, getTestScheme } from './utils'
+import { getTestDAO, newArc, toWei, createCRProposal } from './utils'
 import { getAddress } from 'ethers/utils'
 import { IProposalCreateOptionsCR } from '../src'
 
@@ -36,8 +36,7 @@ describe('Reward', () => {
       ethReward: toWei('300'),
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
-      nativeTokenReward: toWei('1'),
-      plugin: getTestScheme("ContributionReward")
+      nativeTokenReward: toWei('1')
     }
 
     const proposal = await createCRProposal(arc, options)

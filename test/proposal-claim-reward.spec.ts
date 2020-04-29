@@ -3,7 +3,7 @@ import { Arc, DAO, IProposalOutcome, IProposalStage, IProposalState, IProposalCr
 
 import BN from 'bn.js'
 import { createAProposal, firstResult, getTestAddresses, getTestDAO, ITestAddresses, newArc,
-  toWei, voteToPassProposal, waitUntilTrue, createCRProposal, getTestScheme } from './utils'
+  toWei, voteToPassProposal, waitUntilTrue, createCRProposal } from './utils'
 import { BigNumber } from 'ethers/utils'
 import { ethers } from 'ethers'
 import { ContributionRewardProposal } from '../src'
@@ -50,8 +50,7 @@ describe('Claim rewards', () => {
       ethReward,
       externalTokenReward: toWei('0'),
       nativeTokenReward,
-      reputationReward,
-      plugin: getTestScheme("ContributionReward")
+      reputationReward
     }
 
     const proposal = await createCRProposal(arc, options)
@@ -107,8 +106,7 @@ describe('Claim rewards', () => {
       externalTokenAddress: gen.address,
       externalTokenReward,
       nativeTokenReward: new BN(0),
-      reputationReward: new BN(0),
-      plugin: getTestScheme("ContributionReward")
+      reputationReward: new BN(0)
     }
 
     const proposal = await createCRProposal(arc, options)

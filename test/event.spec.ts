@@ -1,6 +1,6 @@
 import { first } from 'rxjs/operators'
 import { Arc, DAO, Event, IEventState, IProposalCreateOptionsCR } from '../src'
-import { getTestDAO, newArc, toWei, waitUntilTrue, createCRProposal, getTestScheme } from './utils'
+import { getTestDAO, newArc, toWei, waitUntilTrue, createCRProposal } from './utils'
 
 jest.setTimeout(20000)
 
@@ -35,7 +35,6 @@ describe('Event', () => {
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
       nativeTokenReward: toWei('1'),
-      plugin: getTestScheme("ContributionReward"),
       title: 'a-title'
     }
 

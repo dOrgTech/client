@@ -8,7 +8,7 @@ import {
   GenericSchemeProposal,
   LATEST_ARC_VERSION
   } from '../src'
-import { newArc, voteToPassProposal, waitUntilTrue, getTestScheme } from './utils'
+import { newArc, voteToPassProposal, waitUntilTrue } from './utils'
 import { ethers } from 'ethers'
 
 jest.setTimeout(60000)
@@ -44,8 +44,7 @@ describe('Proposal', () => {
     const tx = await genericScheme.createProposal({
       dao: dao.id,
       callData,
-      value: 0,
-      plugin: getTestScheme('GenericScheme')
+      value: 0
     }).send()
 
     if(!tx.result) throw new Error('Create proposal yielded no result')

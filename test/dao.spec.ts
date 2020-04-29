@@ -5,7 +5,6 @@ import { IProposalStage, Proposal } from '../src'
 import { 
   fromWei,
   getTestDAO,
-  getTestScheme,
   newArc,
   newArcWithoutGraphql,
   toWei,
@@ -150,8 +149,7 @@ describe('DAO', () => {
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
       nativeTokenReward: toWei('1'),
-      reputationReward: toWei('10'),
-      plugin: getTestScheme("ContributionReward")
+      reputationReward: toWei('10')
     }
 
     const proposal = await createCRProposal(arc, options)
@@ -177,8 +175,7 @@ describe('DAO', () => {
       externalTokenAddress: undefined,
       externalTokenReward: toWei('0'),
       nativeTokenReward: toWei('1'),
-      reputationReward: toWei('10'),
-      plugin: getTestScheme("ContributionReward")
+      reputationReward: toWei('10')
     }
 
     await createCRProposal(arc, options)
